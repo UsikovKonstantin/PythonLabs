@@ -1,16 +1,20 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from sort import *
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def check_sorting():
+    input_lst = generate_list(10000, -10000, 10000)
+    generate_file(input_lst, "input.txt")
+    lst = get_list_from_file("input.txt")
+    print(lst)
+    quick_sort(lst)
+    write_list_to_file(lst, "output.txt")
+    print(lst)
 
 
-# Press the green button in the gutter to run the script.
+def check_time():
+    quick_sort_test(100000, -1000000000, 1000000000, 100000, 10000)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    check_sorting()
+    # check_time()

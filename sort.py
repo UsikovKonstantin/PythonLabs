@@ -10,13 +10,12 @@ def generate_list(n: int, mn: int, mx: int):
     return lst
 
 
-# Generates a file 'file_name' with n integers in the range [mn, mx].
-def generate_file(n: int, mn: int, mx: int, file_name: str):
+# Generates a file 'file_name' with numbers.
+def generate_file(lst, file_name: str):
     file = open(file_name, "w")
-    file.write(str(n) + "\n")
-    lst = generate_list(n, mn, mx)
-    for i in range(0, n):
-        file.write(str(lst[i]) + "\n")
+    file.write(str(len(lst)) + "\n")
+    for item in lst:
+        file.write(str(item) + "\n")
     file.close()
 
 
@@ -27,6 +26,7 @@ def get_list_from_file(file_name: str):
     lst = [0] * n
     for i in range(0, n):
         lst[i] = int(file.readline())
+    return lst
 
 
 # Writes the list to a file.
@@ -50,7 +50,7 @@ def quick_sort_range(lst, left: int, right: int):
         return
     i = left
     j = right
-    mid = lst[random.randint(left, right)]
+    mid = lst[left]
     while i <= j:
         while lst[i] < mid:
             i += 1
@@ -60,7 +60,9 @@ def quick_sort_range(lst, left: int, right: int):
             (lst[i], lst[j]) = (lst[j], lst[i])
             i += 1
             j -= 1
+    if left < j:
         quick_sort_range(lst, left, j)
+    if i < right:
         quick_sort_range(lst, i, right)
 
 
