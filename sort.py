@@ -1,4 +1,5 @@
 import random
+import time
 
 
 # Returns a list of n elements with integers in the range [mn, mx].
@@ -9,15 +10,42 @@ def generate_list(n: int, mn: int, mx: int):
     return lst
 
 
+# Generates a file 'file_name' with n integers in the range [mn, mx].
+def generate_file(n: int, mn: int, mx: int, file_name: str):
+    file = open(file_name, "w")
+    file.write(str(n) + "\n")
+    lst = generate_list(n, mn, mx)
+    for i in range(0, n):
+        file.write(str(lst[i]) + "\n")
+    file.close()
+
+
+# Returns a list of numbers obtained from a file.
+def get_list_from_file(file_name: str):
+    file = open(file_name, "r")
+    n = int(file.readline())
+    lst = [0] * n
+    for i in range(0, n):
+        lst[i] = int(file.readline())
+
+
+# Writes the list to a file.
+def write_list_to_file(lst, file_name: str):
+    file = open(file_name, "w")
+    for item in lst:
+        file.write(str(item) + "\n")
+    file.close()
+
+
 # Sorts the list, if reverse is true then sorts in reverse order.
-def quick_sort(lst, reverse=False):
+def quick_sort(lst, reverse: bool = False):
     quick_sort_range(lst, 0, len(lst) - 1)
     if reverse:
         lst.reverse()
 
 
 # Recursive quick sort method.
-def quick_sort_range(lst, left, right):
+def quick_sort_range(lst, left: int, right: int):
     if left >= right:
         return
     i = left
@@ -34,3 +62,15 @@ def quick_sort_range(lst, left, right):
             j -= 1
         quick_sort_range(lst, left, j)
         quick_sort_range(lst, i, right)
+
+
+# Method for testing the execution time of quick sort.
+def quick_sort_test(n: int, mn: int, mx: int, increment: int, n_repeat: int):
+    for i in range(0, n_repeat):
+        lst = generate_list(n, mn, mx)
+        start_time = time.time()
+        quick_sort(lst)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(n, elapsed_time)
+        n += increment
