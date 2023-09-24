@@ -2,13 +2,13 @@ from sort import *
 
 
 def check_sorting():
-    input_lst = generate_list(10000, -10000, 10000)
+    input_lst = generate_list(10, -100, 100)
     generate_file(input_lst, "input.txt")
     lst = get_list_from_file("input.txt")
-    print(lst)
+    print("Input: ", lst)
     quick_sort(lst)
     write_list_to_file(lst, "output.txt")
-    print(lst)
+    print("Output: ", lst)
 
 
 def check_time():
