@@ -1,4 +1,4 @@
-from lib import *
+from Library.lib import *
 import random
 
 
@@ -24,6 +24,6 @@ def battle(warrior1, warrior2):
 
 
 if __name__ == '__main__':
-    Warrior1 = Warrior(100, 20)
-    Warrior2 = Warrior(100, 20)
+    Warrior1 = Warrior(100, 40)
+    Warrior2 = Warrior(200, 20)
     battle(Warrior1, Warrior2)
