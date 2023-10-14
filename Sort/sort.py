@@ -39,9 +39,11 @@ def write_list_to_file(lst, file_name: str):
 
 # Sorts the list, if reverse is true then sorts in reverse order.
 def quick_sort(lst, reverse: bool = False):
-    quick_sort_range(lst, 0, len(lst) - 1)
+    lst_copy = lst.copy()
+    quick_sort_range(lst_copy, 0, len(lst_copy) - 1)
     if reverse:
-        lst.reverse()
+        lst_copy.reverse()
+    return lst_copy
 
 
 # Recursive quick sort method.

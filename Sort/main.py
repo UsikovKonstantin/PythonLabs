@@ -6,9 +6,9 @@ def check_sorting():
     generate_file(input_lst, "input.txt")
     lst = get_list_from_file("input.txt")
     print("Input: ", lst)
-    quick_sort(lst)
-    write_list_to_file(lst, "output.txt")
-    print("Output: ", lst)
+    sorted_list = quick_sort(lst)
+    write_list_to_file(sorted_list, "output.txt")
+    print("Output: ", sorted_list)
 
 
 def check_time():
