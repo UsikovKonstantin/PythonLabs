@@ -1,44 +1,53 @@
 import random
-import time
 
 
-# Returns a list of n elements with integers in the range [mn, mx].
 def generate_list(n: int, mn: int, mx: int):
+    """
+    Generates a list.
+    :param n: number of elements
+    :param mn: minimum item value
+    :param mx: maximum item value
+    :return: list of n elements with integers in the range [mn, mx]
+    """
     lst = []
     for i in range(0, n):
         lst.append(random.randint(mn, mx))
     return lst
 
 
-# Generates a file 'file_name' with numbers.
-def generate_file(lst, file_name: str):
+def write_list_to_file(lst, file_name: str):
+    """
+    Writes the list to a file.
+    :param lst: list to write
+    :param file_name: name of the file
+    :return: None
+    """
     file = open(file_name, "w")
-    file.write(str(len(lst)) + "\n")
     for item in lst:
         file.write(str(item) + "\n")
     file.close()
 
 
-# Returns a list of numbers obtained from a file.
 def get_list_from_file(file_name: str):
+    """
+    Reads a list from a file.
+    :param file_name: name of the file
+    :return: list from a file
+    """
     file = open(file_name, "r")
-    n = int(file.readline())
-    lst = [0] * n
-    for i in range(0, n):
-        lst[i] = int(file.readline())
+    lst = []
+    for line in file:
+        lst.append(int(line))
     return lst
 
 
-# Writes the list to a file.
-def write_list_to_file(lst, file_name: str):
-    file = open(file_name, "w")
-    for item in lst:
-        file.write(str(item) + "\n")
-    file.close()
-
-
-# Sorts the list, if reverse is true then sorts in reverse order.
 def quick_sort(lst, reverse: bool = False):
+    """
+    Sorts the list.
+    :param lst: list to sort
+    :param reverse: if true then sorts in reverse order
+    :return: sorted list
+    """
     lst_copy = lst.copy()
     quick_sort_range(lst_copy, 0, len(lst_copy) - 1)
     if reverse:
@@ -46,8 +55,14 @@ def quick_sort(lst, reverse: bool = False):
     return lst_copy
 
 
-# Recursive quick sort method.
 def quick_sort_range(lst, left: int, right: int):
+    """
+    Recursive quick sort method.
+    :param lst: list to sort
+    :param left: index of the left element of the subarray
+    :param right: index of the right element of the subarray
+    :return: None
+    """
     if left >= right:
         return
     i = left
@@ -66,15 +81,3 @@ def quick_sort_range(lst, left: int, right: int):
         quick_sort_range(lst, left, j)
     if i < right:
         quick_sort_range(lst, i, right)
-
-
-# Method for testing the execution time of quick sort.
-def quick_sort_test(n: int, mn: int, mx: int, increment: int, n_repeat: int):
-    for i in range(0, n_repeat):
-        lst = generate_list(n, mn, mx)
-        start_time = time.time()
-        quick_sort(lst)
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        print(n, elapsed_time)
-        n += increment
