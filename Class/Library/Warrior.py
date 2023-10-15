@@ -9,7 +9,7 @@ class Warrior:
     :param damage: Warrior's damage
     """
 
-    def __init__(self, name, health, damage):
+    def __init__(self, name: str, health: int, damage: int):
         """
         Class constructor.
         :param name: Warrior's name
@@ -29,7 +29,7 @@ class Warrior:
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """
         Name setter.
         :param name: Warrior's name
@@ -46,7 +46,7 @@ class Warrior:
         return self.__health
 
     @health.setter
-    def health(self, health):
+    def health(self, health: int):
         """
         Health setter.
         :param health: Warrior's health
@@ -65,7 +65,7 @@ class Warrior:
         return self.__damage
 
     @damage.setter
-    def damage(self, damage):
+    def damage(self, damage: int):
         """
         Damage setter.
         :param damage: Warrior's damage
