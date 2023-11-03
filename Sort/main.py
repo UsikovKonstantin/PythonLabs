@@ -1,6 +1,7 @@
 import sys
 import time
 from sort import *
+import matplotlib.pyplot as plt
 
 
 def check_sorting(n: int, mn: int, mx: int):
@@ -43,14 +44,22 @@ def measure_time(n: int, mn: int, mx: int, increment: int, n_repeat: int):
     :param n_repeat: number of steps
     :return: None
     """
+    x = []
+    y = []
     for i in range(0, n_repeat):
         lst = generate_list(n, mn, mx)
         start_time = time.time()
         quick_sort(lst)
         end_time = time.time()
         elapsed_time = end_time - start_time
-        print(n, elapsed_time)
+        x.append(n)
+        y.append(elapsed_time)
         n += increment
+    plt.plot(x, y)
+    plt.title("Quick sort")
+    plt.xlabel("N")
+    plt.ylabel("Time, s")
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -60,6 +69,6 @@ if __name__ == '__main__':
     if inp == "1":
         check_sorting(10, -100, 100)
     elif inp == "2":
-        measure_time(100000, -1000000000, 1000000000, 100000, 10)
+        measure_time(50000, -1000000000, 1000000000, 50000, 10)
     else:
         print("Unknown option")
