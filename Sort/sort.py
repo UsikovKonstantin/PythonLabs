@@ -15,7 +15,7 @@ def generate_list(n: int, mn: int, mx: int):
     return lst
 
 
-def write_list_to_file(lst, file_name: str):
+def write_list_to_file(lst: list, file_name: str):
     """
     Writes the list to a file.
     :param lst: list to write
@@ -41,7 +41,7 @@ def get_list_from_file(file_name: str):
     return lst
 
 
-def quick_sort(lst, reverse: bool = False):
+def quick_sort(lst: list, reverse: bool = False):
     """
     Sorts the list.
     :param lst: list to sort
@@ -55,7 +55,7 @@ def quick_sort(lst, reverse: bool = False):
     return lst_copy
 
 
-def quick_sort_range(lst, left: int, right: int):
+def quick_sort_range(lst: list, left: int, right: int):
     """
     Recursive quick sort method.
     :param lst: list to sort
